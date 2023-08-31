@@ -1,3 +1,3 @@
-import { getForecast } from "./weatherApi.js";
+import { searchForm } from "./form.js";
 
-getForecast("Tokyo");
+document.body.appendChild(searchForm());
