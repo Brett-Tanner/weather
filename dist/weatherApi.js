@@ -13,7 +13,11 @@ function getForecast(city) {
         const response = yield fetch(requestString);
         const data = yield response.json();
         const forecast = data.forecast;
-        console.log(forecast);
+        const current = data.current;
+        const location = data.location;
+        console.log("forecast", forecast);
+        console.log("current", current);
+        console.log("location", location);
     });
 }
 export { getForecast };

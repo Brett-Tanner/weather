@@ -3,7 +3,14 @@ async function getForecast(city: string) {
   const response = await fetch(requestString);
   const data = await response.json();
   const forecast = data.forecast;
-  console.log(forecast);
+  const current = data.current;
+  const location = data.location;
+  console.log("forecast", forecast);
+  console.log("current", current);
+  console.log("location", location);
+  // Use a promise all here
+  // Then call create main with no args
+  // Once the promise all resolves, call it again with proper args
 }
 
 export { getForecast };
