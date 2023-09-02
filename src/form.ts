@@ -1,6 +1,9 @@
 import { getForecast } from "./weatherApi.js";
 
 function searchForm() {
+  const main = getMain();
+  document.body.appendChild(main);
+
   const form = document.createElement("form");
 
   const search = document.createElement("input");
@@ -44,10 +47,21 @@ function searchForm() {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const city = search.value;
-    getForecast(city);
+    getForecast(city, main);
   });
 
   return form;
+}
+
+function getMain() {
+  const existingMain = document.getElementById("content");
+  if (existingMain) {
+    return existingMain;
+  } else {
+    const newMain = document.createElement("main");
+    newMain.id = "content";
+    return newMain;
+  }
 }
 
 export { searchForm };

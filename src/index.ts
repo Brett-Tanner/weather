@@ -1,3 +1,3 @@
 import { searchForm } from "./form.js";
 
-document.body.appendChild(searchForm());
+document.body.prepend(searchForm());

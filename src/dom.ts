@@ -42,6 +42,15 @@ function createHeader(data?: locationResponse) {
   const header = document.createElement("header");
 
   if (data) {
+    const mainHeading = document.createElement("h1");
+    mainHeading.innerText = `${data.name}, ${data.country}`;
+    mainHeading.classList.add("text-3xl", "font-semibold");
+
+    const time = document.createElement("h4");
+    time.innerText = data.localtime;
+    time.classList.add("text-lg");
+
+    header.append(mainHeading, time);
   } else {
     const headingSkeleton = document.createElement("div");
     headingSkeleton.classList.add("bg-slate-600", "h-16", "rounded");
@@ -49,7 +58,7 @@ function createHeader(data?: locationResponse) {
     header.classList.add("animate-pulse", "h-20");
   }
 
-  header.classList.add("w-full");
+  header.classList.add("w-full", "text-center");
   return header;
 }
 
