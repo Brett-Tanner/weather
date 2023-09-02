@@ -2,14 +2,18 @@ import { getForecast } from "./weatherApi.js";
 
 function searchForm() {
   const form = document.createElement("form");
+
   const search = document.createElement("input");
   search.type = "search";
+  search.autofocus = true;
   search.classList.add(
     "h-10",
     "p-1",
     "text-center",
     "rounded-md",
-    "bg-slate-600"
+    "bg-slate-600",
+    "focus-visible:outline",
+    "focus-visible:outline-1"
   );
 
   const submit = document.createElement("button");
@@ -22,7 +26,9 @@ function searchForm() {
     "border-slate-500",
     "rounded-md",
     "bg-slate-600",
-    "hover:bg-slate-500"
+    "hover:bg-slate-500",
+    "focus-visible:outline",
+    "focus-visible:outline-1"
   );
 
   form.append(search, submit);

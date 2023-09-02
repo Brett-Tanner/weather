@@ -1,3 +1,9 @@
+interface apiResponse {
+  current: currentResponse;
+  forecast: forecastResponse;
+  location: locationResponse;
+}
+
 interface forecastResponse {
   forecastday: forecast[];
 }
