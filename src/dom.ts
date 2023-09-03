@@ -64,6 +64,7 @@ function createCard(data?: forecast | currentResponse) {
     "date" in data
       ? card.append(...forecastInfo(data.day))
       : card.append(...currentInfo(data));
+    card.classList.add(...weatherClasses(data));
   } else {
     card.classList.add("animate-pulse");
   }
@@ -73,7 +74,6 @@ function createCard(data?: forecast | currentResponse) {
     "rounded-xl",
     "h-full",
     "p-3",
-    "bg-slate-700",
     "flex",
     "flex-wrap",
     "justify-center",
@@ -177,6 +177,21 @@ function skyInfo(data: currentResponse) {
   skyContainer.classList.add("flex", "gap-3", "text-xl");
   skyContainer.append(cloud, precip_mm, uv, wind_kph);
   return skyContainer;
+}
+
+function weatherClasses(data: currentResponse | forecast) {
+  const weather =
+    "date" in data ? data.day.condition.text : data.condition.text;
+
+  if (weather.includes("Sun") || weather.includes("Clear")) {
+    return ["bg-amber-700", "shadow-xl", "shadow-amber-800"];
+  } else if (weather.includes("drizzle") || weather.includes("rain")) {
+    return ["bg-blue-700", "shadow-xl", "shadow-blue-800"];
+  } else if (weather.includes("lightning") || weather.includes("thunder")) {
+    return ["bg-yellow-500", "shadow-xl", "shadow-yellow-600"];
+  } else {
+    return ["bg-slate-700", "shadow-xl", "shadow-slate-800"];
+  }
 }
 
 export { displayWeather };
